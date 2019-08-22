@@ -1,0 +1,34 @@
+<aura:component description="CustomLookupDemo">
+    <aura:attribute name="selectedSingleContact" type="Object"/>
+    <aura:attribute name="selectedContacts" type="List"/>
+    
+    <lightning:layout multipleRows="true" >
+        <lightning:layoutItem size="6">
+            <c:CustomLookup multiple="false" IconName="standard:contact" selectedRecord="{!v.selectedSingleContact}"
+                            objectAPIName="Contact" label="Select only one record"/>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="6">
+            <c:CustomLookup multiple="true" IconName="standard:groups" selectedList="{!v.selectedContacts}"
+                            objectAPIName="Contact" label="Select multiple records"/>
+        </lightning:layoutItem>
+
+        <lightning:layoutItem size="6" class="slds-m-top--large slds-text-heading_small slds-text-title_bold">
+            <label>Selected Contact: </label>
+        </lightning:layoutItem>
+
+        <lightning:layoutItem size="6" class="slds-m-top--large slds-text-heading_small slds-text-title_bold">
+            <label >Selected Contacts: </label>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="6">
+            <label>{!v.selectedSingleContact.Name}</label>
+        </lightning:layoutItem>
+
+        <lightning:layoutItem>
+            <ul class="slds-list--dotted">
+                <aura:iteration items="{!v.selectedContacts}" var="cont">
+                    <li>{!cont.Name}</li>
+                </aura:iteration>
+            </ul>
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>
