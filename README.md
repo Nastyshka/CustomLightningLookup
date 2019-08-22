@@ -1,0 +1,2 @@
+# CustomLightningLookup
+Custom Lightning component. 
